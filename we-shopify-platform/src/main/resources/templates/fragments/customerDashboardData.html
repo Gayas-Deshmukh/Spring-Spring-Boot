@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div class="dashboard-wrapper" th:fragment="customerDashboardData">
+	<div class="dashboard-ecommerce">
+   		<div class="container-fluid dashboard-content ">
+   			<div class="row">
+	            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+	                <div class="page-header">
+	                    <h2 class="pageheader-title">Customer Details</h2>
+	                    <div class="page-breadcrumb">
+	                        <nav aria-label="breadcrumb">
+	                            <ol class="breadcrumb">
+	                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Customers</a></li>
+	                                <li class="breadcrumb-item active" aria-current="page">View Customers</li>
+	                            </ol>
+	                        </nav>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+			<div class="row">
+                          <!-- recent orders  -->
+		        <!-- ============================================================== -->
+		        <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+		            <div class="card">
+		                <div class="card-body p-0">
+		                    <div class="table-responsive">
+		                        <table class="table">
+		                            <thead class="bg-light">
+		                                <tr class="border-0">
+		                                    <th class="border-0">First Name</th>
+		                                    <th class="border-0">Last Name</th>
+		                                    <th class="border-0">User Name</th>
+		                                    <th class="border-0">Mobile Number</th>
+		                                    <th class="border-0">Status</th>
+		                                    <th class="border-0">Action</th>
+		                                </tr>
+		                            </thead>
+		                            <tbody>
+		                                <tr th:each="customer:${allCustomers}">
+		                                    <td><p th:text="${{customer.firstName}}"></p></td>
+		                                    <td><p th:text="${{customer.lastName}}"></p></td>
+		                                    <td><p th:text="${{customer.userName}}"></p></td>
+		                                    <td><p th:text="${{customer.email}}"></p></td>
+		                                    <td><p th:text="${{customer.mobileNo}}"></p></td>
+		                                 	<td><p th:text="${{customer.isSelfReg}}"></p></td>
+		                                    <td>
+		                                    	<div>
+		                                    		<a th:href="@{'/edit-customer/'+${customer.id}}">
+		                                    			<span class="glyphicon glyphicon-edit"> </span>
+		                                    		</a> |
+		                                    		<a th:href="@{'/delete-customer/'+${customer.id}}">
+		                                    			<span class="glyphicon glyphicon-remove"> </span>
+		                                    		</a>
+		                                    	</div>
+		                                    </td>
+		                                </tr>
+		                            </tbody>
+		                        </table>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="card-body">
+		            	<table>
+		            		<tr>
+		            			<td>
+		            				<nav aria-label="Page navigation example">
+										<ul class="pagination">
+											<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+											<li class="page-item"><a class="page-link" href="#">1</a></li>
+											<li class="page-item active"><a class="page-link "
+												href="#">2</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
+											<li class="page-item"><a class="page-link" href="#">Next</a></li>
+										</ul>
+									</nav>
+		            			</td>
+		            			<td>
+		            				<div class="dropdown" >
+										<button class="btn btn-primary dropdown-toggle" type="button"
+											data-toggle="dropdown" style="padding: 5px;">
+											No.Of Rec Per Page
+											<!-- <span class="caret"></span> -->
+										</button>
+										<ul class="dropdown-menu">
+											<li><a th:href="@{'/view-customerBoard/2'}">2</a></li>
+											<li><a th:href="@{'/view-customers/10'}">10</a></li>
+											<li><a th:href="@{'/view-customers/15'}">15</a></li>
+										</ul>
+									</div>
+		            			</td>
+		            		</tr>
+		            	</table>
+		            </div>
+		        </div>
+                            <!-- ============================================================== -->
+                            <!-- end recent orders  -->
+			</div>		
+		</div>
+	</div>
+	</div>
+</div>
+</body>
+</html>
