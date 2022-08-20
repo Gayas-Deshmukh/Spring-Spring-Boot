@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Built-By: GAYAS
+Build-Jdk: 17.0.3
+Main-Class: com.non.spring.boot.project.Test
+Created-By: Maven Integration for Eclipse
+
