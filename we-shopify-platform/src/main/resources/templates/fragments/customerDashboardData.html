@@ -26,15 +26,73 @@
                           <!-- recent orders  -->
 		        <!-- ============================================================== -->
 		        <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
-		            <div class="card">
+		        	<div class="card">
+		        		<div class="card-body" >
+							<div class="form-group">
+								<form th:action="@{/search-customers}" method="post">
+									<div class="col-md-2">
+										<label>Search:</label> 
+									</div>
+									<div class="col-md-4">
+										<select class="form-control" name="searchKey">
+											<option value="All">Please Select</option>
+											<option value="ByEmail">By Email</option>
+											<option value="ByMobile">By Mobile</option>
+											<option value="ByUserName">By UserName</option>
+										</select> 
+									</div>
+									<div class="col-md-4">
+										<input type="text" name="searchText" placeholder="Please enter search text" class="form-control" />
+									</div>
+									<div class="col-md-2">
+										<button class="btn btn-primary"  type="submit">Search</button>
+									</div>
+							   </form>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">				
+						</div>
+						<!-- <div class="col-md-2">
+							<div class="form-group" th:action="@{'/view-customer-board/email'}" method="post">
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							  		<label class="btn btn-outline-primary">
+							    		<input type="radio" name="sortType"  autocomplete="off" value="asc" checked>ASC
+							  		</label>
+							  		<label class="btn btn-outline-primary">
+							   			<input type="radio" name="sortType"  autocomplete="off" value="desc">DESC
+							  		</label>
+								</div>
+							</div>
+						</div> -->
+						<div class="col-md-1">				
+						</div>
+						<div class="col-md-2">
+							<div class="dropdown">
+								<button class="btn btn-primary dropdown-toggle"
+									type="button" data-toggle="dropdown">
+									Sort By
+									<!-- <span class="caret"></span> -->
+								</button>
+								<ul class="dropdown-menu">
+									<li><a th:href="@{'/view-customer-board/email'}">Email</a></li>
+									<li><a th:href="@{'/view-customer-board/userName'}">User Name</a></li>
+									<li><a th:href="@{'/view-customer-board/mobileNo'}">Mobile</a></li>
+								</ul>
+							</div>				
+						</div>
+					</div>
+		            <div class="card" style="margin-top: 5px;">
 		                <div class="card-body p-0">
 		                    <div class="table-responsive">
-		                        <table class="table">
+		                        <table class="table  table-hover">
 		                            <thead class="bg-light">
-		                                <tr class="border-0">
+		                                <tr class="border-0 table-primary">
 		                                    <th class="border-0">First Name</th>
 		                                    <th class="border-0">Last Name</th>
 		                                    <th class="border-0">User Name</th>
+		   								    <th class="border-0">Email</th>
 		                                    <th class="border-0">Mobile Number</th>
 		                                    <th class="border-0">Status</th>
 		                                    <th class="border-0">Action</th>
@@ -70,12 +128,9 @@
 		            			<td>
 		            				<nav aria-label="Page navigation example">
 										<ul class="pagination">
-											<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
-											<li class="page-item active"><a class="page-link "
-												href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
-											<li class="page-item"><a class="page-link" href="#">Next</a></li>
+											<li class="page-item"><a class="page-link" th:href="@{'/view-customerBoard/'+${previousPage}+'/'+${noOfRecPerPage}}">Previous</a></li>
+											<li  th:each="page : ${noOfPages}" class="page-item"><a class="page-link" th:href="@{'/view-customerBoard/'+${page}+'/'+${noOfRecPerPage}}" th:text="${page}"></a></li>
+											<li class="page-item"><a class="page-link" th:href="@{'/view-customerBoard/'+${nextPage}+'/'+${noOfRecPerPage}}">Next</a></li>
 										</ul>
 									</nav>
 		            			</td>
@@ -84,12 +139,11 @@
 										<button class="btn btn-primary dropdown-toggle" type="button"
 											data-toggle="dropdown" style="padding: 5px;">
 											No.Of Rec Per Page
-											<!-- <span class="caret"></span> -->
 										</button>
 										<ul class="dropdown-menu">
-											<li><a th:href="@{'/view-customerBoard/2'}">2</a></li>
-											<li><a th:href="@{'/view-customers/10'}">10</a></li>
-											<li><a th:href="@{'/view-customers/15'}">15</a></li>
+											<li><a th:href="@{'/view-customerBoard/1/2'}">2</a></li>
+											<li><a th:href="@{'/view-customerBoard/1/5'}">5</a></li>
+											<li><a th:href="@{'/view-customerBoard/1/10'}">10</a></li>
 										</ul>
 									</div>
 		            			</td>
