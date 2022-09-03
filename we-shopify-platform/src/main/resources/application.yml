@@ -1,0 +1,55 @@
+# Common properties
+server: 
+ port: 5002
+ 
+spring: 
+ application: 
+  name: we-shopify-plateform
+ thymeleaf: 
+  cache: false
+ jpa: 
+  hibernate: 
+   ddl-auto: update
+   format-sql: true 
+# Keeping default profile as dev
+ profiles:
+    active: dev
+#logging.level.org.springframework=debug
+---
+weshopify: 
+ app: 
+  search: 
+   keys: ByEmail,ByMobile,ByUserName
+---
+# External database i.e MySql configuration for Dev Env
+spring: 
+ config:
+    activate:
+      on-profile: dev
+ datasource:
+  dbcp2:
+   driver-class-name: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/weshopify-app
+  username: root
+  password: root
+
+---
+# In-memory database configuration for QA Env
+spring: 
+ config:
+    activate:
+      on-profile: qa
+#DataBase console Configuartion
+ h2: 
+  console: 
+   enabled: true
+   path: /h2Console
+
+# In-memory database configuration
+ datasource: 
+  dbcp2: 
+   driver-class-name: org.h2.Driver
+  url: jdbc:h2:mem:we-shopify-app
+  username: 12
+  password: 12
+
