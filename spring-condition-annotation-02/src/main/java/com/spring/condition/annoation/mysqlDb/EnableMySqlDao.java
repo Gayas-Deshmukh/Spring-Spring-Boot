@@ -9,15 +9,16 @@ public class EnableMySqlDao implements Condition {
 	public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata)
 	{
 		// Without adding database dependencies
-		/*
+		
 		String dbType = System.getProperty("dbType"); // //we will pass : -DdbType=MySql
 	  
 		System.out.println("db type is:\t"+ dbType + " : from EnableMySqlDao");
 	  
 		return dbType != null && dbType.contentEquals("MySql");	
-	  	*/
+	  	
 		
 		// Check this when we add database dependencies
+		/*
 		boolean enableMysql = false;
 		
 		try 
@@ -34,6 +35,7 @@ public class EnableMySqlDao implements Condition {
 		}
 		
 		return enableMysql;
-	}
+		*/
+	}   
 
 }

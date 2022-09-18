@@ -10,16 +10,17 @@ public class EnableOracleDb implements Condition
 	public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata)
 	{
 		// Without adding database dependencies
-		/*
+		
 		  String dbType = System.getProperty("dbType"); //we will pass : -DdbType=Oracle
 		  
 		  System.out.println("db type is:\t"+ dbType + " : from EnableOracleDb");
 		  
 		  return dbType != null && dbType.contentEquals("Oracle");
-		*/
+		
 		
 		
 		// Check this when we add database dependencies
+		/*
 		boolean enableH2 = false;
 		
 		try 
@@ -38,6 +39,7 @@ public class EnableOracleDb implements Condition
 		}
 		
 		return enableH2;
+		*/
 	}
 
 }
